@@ -40,17 +40,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options
-  
-  # config.vm.synced_folder "/Users/armandomagalhaes/Documents/web-dev/ferramentas", "/var/www/ferramentas"
-  config.vm.synced_folder "C:/Projetos/vagrant-php-server/www", "/var/www/"
+
+  config.vm.synced_folder "~/Documents/Projetos/vagrant-php-server/www", "/var/www/"
+  # config.vm.synced_folder "C:/Projetos/vagrant-php-server/www", "/var/www/"
 
   config.vm.provision :shell, path: "server-conf/bootstrap.sh"
   config.vm.provision :file, source: "server-conf/php.ini", destination: "/etc/php.ini"
   config.vm.provision :file, source: "server-conf/httpd.conf", destination: "/etc/httpd/conf/httpd.conf"
-  
+
   config.ssh.username = "root"
   config.ssh.password = "vagrant"
-  
+
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
