@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "chef/centos-6.5"
+  config.vm.box = "grtjn/centos-6.5"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -41,8 +41,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options
 
-  config.vm.synced_folder "~/Documents/Projetos/vagrant-php-server/www", "/var/www/"
-  # config.vm.synced_folder "C:/Projetos/vagrant-php-server/www", "/var/www/"
+  # config.vm.synced_folder "~/Documents/Projetos/vagrant-php-server/www", "/var/www/"
+  config.vm.synced_folder "D:/vagrant-php-server/www", "/var/www/"
 
   config.vm.provision :shell, path: "server-conf/bootstrap.sh"
   config.vm.provision :file, source: "server-conf/php.ini", destination: "/etc/php.ini"
