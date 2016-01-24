@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 80, host: 8090
+  config.vm.network "forwarded_port", guest: 80, host: 5000
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -41,8 +41,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options
 
-  # config.vm.synced_folder "~/Documents/Projetos/vagrant-php-server/www", "/var/www/"
-  config.vm.synced_folder "D:/vagrant-php-server/www", "/var/www/"
+  config.vm.synced_folder "~/Documents/Projetos/Flow Desenvolvimento/servicos/highstore/www", "/var/www/"
+  # config.vm.synced_folder "~Documents//vagrant-php-server/www", "/var/www/"
 
   config.vm.provision :shell, path: "server-conf/bootstrap.sh"
   config.vm.provision :file, source: "server-conf/php.ini", destination: "/etc/php.ini"

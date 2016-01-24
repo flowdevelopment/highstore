@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 
+# update yum registry
+rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
+
 yum update -y
 yum upgrade -y
 
+# update kernel
 yum install kernel.x86_64 kernel-devel.x86_64 -y
-yum install nano -y
+
+# install apache
 yum install httpd -y
 
-rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
-yum install php55w php55w-opcache php55w-soap php55w-intl php55w-pecl-xdebug php55w-pgsql php55w-xml php55w-xmlrpc php55w-ldap -y
+# install composer globally
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+
+# install php 5.6 and Magento CE environment dependencies
+yum install -y php56w php56w-opcache php56w-xml php56w-mcrypt php56w-gd php56w-devel php56w-mysql php56w-intl php56w-mbstring
